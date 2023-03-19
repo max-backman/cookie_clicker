@@ -64,8 +64,16 @@
         color: rgb(122, 119, 119);
         text-align: center;
       }
-      p {
+      #count_display {
         font-family: "Press Start 2P", cursive;
+      }
+
+      #link {
+        text-align: center;
+        font-family: "Press Start 2P", cursive;
+        position: absolute;
+        bottom: 50px;
+        left: 900px;
       }
 
       @keyframes fade {
@@ -95,6 +103,16 @@
           opacity: 0;
         }
       }
+
+      a {
+        text-decoration: none;
+        font-size: 20px;
+        text-align: center;
+      }
+
+      #git {
+        width: 50px;
+      }
     </style>
   </head>
   <body>
@@ -104,7 +122,7 @@
         <img id="cookie" src="images/cookie.png" alt="cookie" />
       </button>
       <img id="cookie-get" src="images/cookie.png" alt="cookie-get" />
-      <p>Cookies : <span id="display">0</span></p>
+      <p id="count_display">Cookies : <span id="display">0</span></p>
       <button id="gma">Buy Grandma (50)</button>
       <button id="farm">Buy Farm (300)</button>
       <button id="factory">Buy Factory (1800)</button>
@@ -210,5 +228,14 @@
         } // End;
       </script>
     </h2>
+    <p id="link">
+      <a
+        href="https://github.com/max-backman/max-backman.github.io/tree/main"
+        target="_blank"
+      >
+        github</a
+      >
+      <img id="git" src="images/git_icon.png" alt="" />
+    </p>
   </body>
 </html>

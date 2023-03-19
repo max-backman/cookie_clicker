@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Cookie Clicker Game</title>
+
+    <style>
+      body {
+        background-color: rgb(19, 16, 29);
+      }
+      #cookie {
+        width: 200px;
+        height: 200px;
+      }
+      #cookie-get {
+        width: 25px;
+        height: 25px;
+        position: absolute;
+        bottom: 650px;
+        left: 500px;
+        opacity: 0;
+      }
+
+      button {
+        border: none;
+        color: rgb(122, 119, 119);
+        padding: 16px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+        background-color: white;
+        border: none;
+        background-color: transparent;
+        font-family: "Press Start 2P", cursive;
+        word-spacing: -0.4ch;
+        padding: 0;
+      }
+
+      button:active {
+        transform: translateY(6px);
+        transform: scale(1.4);
+      }
+
+      h1 {
+        color: rgb(122, 119, 119);
+        text-align: center;
+        font-family: "Press Start 2P", cursive;
+        font-size: 75px;
+      }
+      h2 {
+        color: rgb(122, 119, 119);
+        text-align: center;
+      }
+      p {
+        font-family: "Press Start 2P", cursive;
+      }
+
+      @keyframes fade {
+        0%,
+        100% {
+          opacity: 0;
+        }
+        50% {
+          opacity: 1;
+        }
+      }
+      @keyframes rise {
+        from {
+          transform: translateY(0);
+        }
+        to {
+          transform: translateY(-700%);
+        }
+      }
+
+      @keyframes GoUp {
+        0% {
+          opacity: 1;
+        }
+        100% {
+          top: 0px;
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Cookie Clicker</h1>
+    <h2>
+      <button id="btn">
+        <img id="cookie" src="images/cookie.png" alt="cookie" />
+      </button>
+      <img id="cookie-get" src="images/cookie.png" alt="cookie-get" />
+      <p>Cookies : <span id="display">0</span></p>
+      <button id="gma">Buy Grandma (50)</button>
+      <button id="farm">Buy Farm (300)</button>
+      <button id="factory">Buy Factory (1800)</button>
+      <button id="giga">Buy Giga Factory (10800)</button>
+
+      <script>
+        var count = 0;
+        var btn = document.getElementById("btn");
+        var disp = document.getElementById("display");
+        var gma = document.getElementById("gma");
+        var gmas = 0;
+        var gma_price = 50;
+        var gma_prod = document.getElementById("gma_prod");
+        var farm = document.getElementById("farm");
+        var farms = 0;
+        var farm_price = 300;
+        var factory = document.getElementById("factory");
+        var factorys = 0;
+        var factory_price = 1800;
+        var giga = document.getElementById("giga");
+        var gigas = 0;
+        var giga_price = 10800;
+
+        btn.onclick = function () {
+          count++;
+          disp.innerHTML = count;
+          let x = document.getElementById("cookie-get");
+          x.style.bottom = 850;
+          x.style.animation = "fade 2s linear, rise 2s linear";
+        };
+
+        gma.onclick = function () {
+          if (count >= gma_price) {
+            gmas++;
+            counter(5);
+            count = count - gma_price;
+            gma_price += Math.round(gmas * 2.25);
+            disp.innerHTML = count;
+            gma.innerHTML =
+              "Buy Grandma (" +
+              gma_price +
+              ")" +
+              "<br />" +
+              "Grandmas: " +
+              gmas;
+          }
+        };
+
+        farm.onclick = function () {
+          if (count >= farm_price) {
+            farms++;
+            counter(25);
+            count = count - farm_price;
+            farm_price += Math.round(farms * 2.25);
+            disp.innerHTML = count;
+            farm.innerHTML =
+              "Buy Farm (" + farm_price + ")" + "<br />" + "Farms: " + farms;
+          }
+        };
+
+        factory.onclick = function () {
+          if (count >= factory_price) {
+            factorys++;
+            counter(125);
+            count = count - factory_price;
+            factory_price += Math.round(factorys * 2.25);
+            disp.innerHTML = count;
+            factory.innerHTML =
+              "Buy Factory (" +
+              factory_price +
+              ")" +
+              "<br />" +
+              "Factories: " +
+              factorys;
+          }
+        };
+
+        giga.onclick = function () {
+          if (count >= giga_price) {
+            gigas++;
+            counter(625);
+            count = count - giga_price;
+            giga_price += Math.round(gigas * 2.25);
+            disp.innerHTML = count;
+            giga.innerHTML =
+              "Buy Giga Factory (" +
+              giga_price +
+              ")" +
+              "<br />" +
+              "Giga Factories: " +
+              gigas;
+          }
+        };
+
+        function counter(x) {
+          var i = 0;
+          // This block will be executed 100 times.
+          setInterval(function () {
+            i++;
+            count += x * 1;
+            disp.innerHTML = count;
+          }, 1000);
+        } // End;
+      </script>
+    </h2>
+  </body>
+</html>
